@@ -12,6 +12,9 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "engines": {
+        "node": ">=22"
+    },
     "dependencies": {
         "@astrojs/sitemap": "^3.7.1",
         "@astrojs/tailwind": "^6.0.2",
