@@ -2,7 +2,7 @@
 ---
 
 <header
-    class="sticky top-0 flex p-[2rem] justify-between align-center z-30 w-full"
+    class="sticky top-0 flex p-[2rem] justify-between align-center z-30 w-full bg-bgrd-b md:bg-transparent"
 >
     <a
         id="logo"
@@ -36,7 +36,7 @@
     </button>
     <div
         id="mobile-menu"
-        class="hidden absolute top-[6rem] left-0 bg-bgrd-b flex-col items-center py-20 text-3xl text-white gap-8 w-full h-[100vh] md:hidden"
+        class="hidden fixed top-[6rem] left-0 bg-bgrd-b flex-col items-center pt-12 pb-20 text-3xl text-white gap-8 w-full h-[calc(100vh-6rem)] md:hidden"
     >
         <li><a href="#about">About Me</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -59,30 +59,16 @@
     );
 </script>
 <style>
-    .toggle-btn > div::before {
-        --tw-translate-y: 0px;
-        --tw-rotate: 45deg;
-        transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-            rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-            skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-            scaleY(var(--tw-scale-y));
-    }
-
-    .toggle-btn > div::after {
-        --tw-translate-y: 0px;
-        --tw-rotate: -45deg;
-        transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-            rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-            skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-            scaleY(var(--tw-scale-y));
-    }
-
     .toggle-btn > div {
-        --tw-rotate: 720deg;
-        transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-            rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-            skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-            scaleY(var(--tw-scale-y));
+        transform: rotate(720deg);
         background-color: transparent;
+    }
+    .toggle-btn > div::before {
+        translate: -1rem 0;
+        transform: rotate(45deg);
+    }
+    .toggle-btn > div::after {
+        translate: -1rem 0;
+        transform: rotate(-45deg);
     }
 </style>
