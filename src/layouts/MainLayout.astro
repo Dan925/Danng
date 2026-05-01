@@ -46,10 +46,12 @@ const {
         scroll-behavior: smooth;
         scroll-padding-top: 10em;
     }
-    * {
-        padding: 0;
-        margin: 0;
-        font-family: "Fira Code", "monospace";
+    body {
+        width: 100vw;
+        background-color: var(--bgrd);
+        color: white;
+        position: relative;
+        font-family: "Fira Code", monospace;
     }
     li {
         list-style-type: none;
@@ -58,7 +60,6 @@ const {
         text-decoration: none;
         color: var(--gray);
     }
-
     a:hover,
     a:active {
         color: white;
@@ -68,21 +69,10 @@ const {
         margin-bottom: 0.3em;
         font-size: 2.5em;
     }
-
     li a::before,
     h1::before,
     h5::before {
         content: "#";
         color: var(--accent);
-    }
-    body {
-        width: 100vw;
-        background-color: var(--bgrd);
-        color: white;
-        position: relative;
-    }
-
-    img {
-        object-fit: none;
     }
 </style>

@@ -10,30 +10,28 @@ const { title, description, thumbnail, tags, sourceCode } =
     Astro.props as ProjectProps;
 ---
 
-<div
-    class="max-w-[20.6rem] h-[90%] flex-grow p-l-[2rem] rounded-md shadow-xl shadow-black"
+<article
+    class="w-full max-w-[22rem] flex flex-col rounded-md overflow-hidden shadow-xl shadow-black/60 bg-bgrd-b"
 >
-    <div class="rounded-t-md">
-        <img
-            class="h-48 w-full rounded-t-md object-cover"
-            src={thumbnail}
-            alt="project#1 thumbnail"
-            width={326}
-            height={192}
-        />
-        <span class="flex justify-center py-[0.3rem] gap-4 flex-wrap">
-            {tags.map((tech) => <h5>{tech}</h5>)}
-        </span>
+    <img
+        class="h-48 w-full object-cover"
+        src={thumbnail}
+        alt={`${title} thumbnail`}
+        width={352}
+        height={192}
+    />
+    <div class="flex justify-center flex-wrap gap-3 px-4 py-2 border-b-2 border-gray">
+        {tags.map((tech) => <h5 class="text-sm">{tech}</h5>)}
     </div>
-    <div class="p-4 h-1/2 flex flex-col gap-4 border-t-2 border-gray">
+    <div class="flex flex-col gap-4 p-5 flex-1">
         <h2 class="text-2xl">{title}</h2>
-        <p class="text-gray">{description}</p>
+        <p class="text-gray flex-1">{description}</p>
         <a
-            class="text-white my-auto flex border-accent border-2 w-[10rem] h-[3rem] p-[0.2rem] cursor-pointer font-bold fle items-center justify-center"
+            class="text-white flex items-center justify-center gap-2 border-accent border-2 h-12 px-4 cursor-pointer font-bold self-start"
             href={sourceCode}
         >
-            <img src="/Github.svg" alt="" />
+            <img src="/Github.svg" alt="" width={20} height={20} />
             Source Code
         </a>
     </div>
-</div>
+</article>
