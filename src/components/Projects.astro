@@ -1,34 +1,92 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectPreview from "./ProjectPreview.astro";
-const projectEntries = await getCollection("project");
+const projectEntries = (await getCollection("project")).sort((a, b) =>
+    a.id.localeCompare(b.id)
+);
 ---
 
-<!--Projects section-->
 <section
     id="projects"
-    class="flex w-full h-[40rem] flex-wrap flex-col relative items-center"
+    class="flex w-full flex-col items-center py-12 gap-8"
 >
-    <div class="flex w-3/4 items-center gap-4 h-1/5 flex-wrap bg-bgrd">
+    <div class="flex w-3/4 items-center gap-4 flex-wrap bg-bgrd">
         <h1>Projects</h1>
-        <div class="border-t-2 border-accent w-[32rem]"></div>
-        <a class="mx-auto hover:underline" href="https://github.com/Dan925"
-            ><span> See More &rarr;</span></a
-        >
+        <div class="border-t-2 border-accent flex-1 min-w-[8rem]"></div>
+        <a class="hover:underline" href="https://github.com/Dan925">
+            <span>See More &rarr;</span>
+        </a>
     </div>
-    <div
-        class="flex w-full h-[80%] items-baseline overflow-y-auto flex-wrap gap-8 justify-center py-4"
-    >
-        {
-            projectEntries.map(({ data }) => (
-                <ProjectPreview
-                    title={data.title}
-                    description={data.description}
-                    tags={data.tags}
-                    thumbnail={data.thumbnail}
-                    sourceCode={data.sourceCode}
-                />
-            ))
-        }
+
+    <div class="relative w-full max-w-[80rem] px-4">
+        <button
+            type="button"
+            id="proj-prev"
+            aria-label="Previous projects"
+            class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 items-center justify-center rounded-full bg-bgrd-b border-2 border-accent text-white text-3xl hover:bg-accent transition-colors cursor-pointer"
+        >
+            &larr;
+        </button>
+        <button
+            type="button"
+            id="proj-next"
+            aria-label="Next projects"
+            class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 items-center justify-center rounded-full bg-bgrd-b border-2 border-accent text-white text-3xl hover:bg-accent transition-colors cursor-pointer"
+        >
+            &rarr;
+        </button>
+
+        <div
+            id="proj-track"
+            class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 px-2 md:px-12"
+        >
+            {
+                projectEntries.map(({ data }) => (
+                    <ProjectPreview
+                        title={data.title}
+                        description={data.description}
+                        tags={data.tags}
+                        thumbnail={data.thumbnail}
+                        sourceCode={data.sourceCode}
+                        liveUrl={data.liveUrl}
+                    />
+                ))
+            }
+        </div>
     </div>
 </section>
+
+<script>
+    const track = document.querySelector<HTMLElement>("#proj-track");
+    const prev = document.querySelector<HTMLButtonElement>("#proj-prev");
+    const next = document.querySelector<HTMLButtonElement>("#proj-next");
+
+    if (track && prev && next) {
+        const step = () => {
+            const card = track.querySelector<HTMLElement>("article");
+            if (!card) return track.clientWidth;
+            const gap = parseFloat(getComputedStyle(track).columnGap || "32");
+            return card.offsetWidth + gap;
+        };
+        prev.addEventListener("click", () =>
+            track.scrollBy({ left: -step(), behavior: "smooth" })
+        );
+        next.addEventListener("click", () =>
+            track.scrollBy({ left: step(), behavior: "smooth" })
+        );
+    }
+</script>
+
+<style>
+    #proj-track::-webkit-scrollbar {
+        height: 8px;
+    }
+    #proj-track::-webkit-scrollbar-track {
+        background: var(--bgrd-b);
+        border-radius: 4px;
+    }
+    #proj-track::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+    }
+</style>

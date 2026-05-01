@@ -1,16 +1,19 @@
 import { z, defineCollection } from 'astro:content';
 
-// 2. Define a schema for each collection you'd like to validate.
 const project = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
         thumbnail: z.string(),
-        tags: z.array(z.string()).max(3),
-        sourceCode: z.string().url(),
-    }),
+        tags: z.array(z.string()).max(4),
+        sourceCode: z.string().url().optional(),
+        liveUrl: z.string().url().optional(),
+    }).refine(
+        (data) => data.sourceCode || data.liveUrl,
+        { message: "Each project needs at least a sourceCode or liveUrl" }
+    ),
 });
-// 3. Export a single `collections` object to register your collection(s)
+
 export const collections = {
     project
 };
