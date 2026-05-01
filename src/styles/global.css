@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --color-accent: #ed3434;
+    --color-bgrd: #282c33;
+    --color-bgrd-b: #16181c;
+    --color-gray: #abb2bf;
+    --font-firaCode: "Fira Code", monospace;
+}

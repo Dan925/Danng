@@ -1,15 +1,12 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-
-// https://astro.build/config
-import image from "@astrojs/image";
-
-// https://astro.build/config
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
+// https://astro.build/config
 export default defineConfig({
-    site: 'https://danng.netlify.app',
-    integrations: [tailwind(), image({
-        serviceEntryPoint: '@astrojs/image/sharp'
-    }), sitemap()]
+    site: "https://danng.netlify.app",
+    integrations: [sitemap()],
+    vite: {
+        plugins: [tailwindcss()],
+    },
 });

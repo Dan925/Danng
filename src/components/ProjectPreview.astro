@@ -1,6 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
-
 interface ProjectProps {
     title: string;
     description: string;
@@ -16,13 +14,12 @@ const { title, description, thumbnail, tags, sourceCode } =
     class="max-w-[20.6rem] h-[90%] flex-grow p-l-[2rem] rounded-md shadow-xl shadow-black"
 >
     <div class="rounded-t-md">
-        <Image
+        <img
             class="h-48 w-full rounded-t-md object-cover"
             src={thumbnail}
             alt="project#1 thumbnail"
             width={326}
             height={192}
-            format="jpg"
         />
         <span class="flex justify-center py-[0.3rem] gap-4 flex-wrap">
             {tags.map((tech) => <h5>{tech}</h5>)}
