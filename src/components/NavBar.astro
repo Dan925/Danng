@@ -1,74 +1,96 @@
 ---
 ---
 
-<header
-    class="sticky top-0 flex p-[2rem] justify-between align-center z-30 w-full bg-bgrd-b md:bg-transparent"
+<nav
+    class="fixed top-0 left-0 right-0 z-100 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md h-12 flex items-center justify-between px-4 md:px-8"
 >
-    <a
-        id="logo"
-        class="flex items-center gap-[0.2rem] h-fit text-white font-bold"
-        href="#hero"
-    >
-        <img
-            src="/logo.svg"
-            alt="Website logo"
-            width={30}
-            height={30}
-            class="hover:animate-spin"
-        />
-        <h2 class="text-2xl">Dan N.</h2>
-    </a>
-
-    <ul class="hidden md:flex gap-5 mr-[3rem] font-bold">
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contacts">Contacts</a></li>
-    </ul>
-    <button
-        id="hamburger-button"
-        class="relative h-8 w-8 cursor-pointer text-3xl md:hidden"
-    >
-        <div
-            class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']"
+    <a href="#hero" class="flex items-center gap-3 min-w-0">
+        <img src="/logo.svg" alt="Logo" width="22" height="22" />
+        <span class="text-[var(--fg-hi)] text-[13px] tracking-[0.08em]"
+            >dan-ng</span
         >
-        </div>
-    </button>
-    <div
-        id="mobile-menu"
-        class="hidden fixed top-[6rem] left-0 bg-bgrd-b flex-col items-center pt-12 pb-20 text-3xl text-white gap-8 w-full h-[calc(100vh-6rem)] md:hidden"
-    >
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contacts">Contacts</a></li>
+        <span class="hidden sm:inline text-[var(--border)] text-xs">~</span>
+        <span class="hidden sm:inline text-[var(--accent)] text-xs"
+            >portfolio</span
+        >
+        <span class="hidden sm:inline cursor-blink"></span>
+    </a>
+    <div class="flex items-center gap-3 md:gap-6 text-xs tracking-[0.06em]">
+        <a
+            href="#projects"
+            class="text-[var(--fg)] hover:text-[var(--fg-hi)] transition-colors"
+            >#projects</a
+        >
+        <a
+            href="#skills"
+            class="text-[var(--fg)] hover:text-[var(--fg-hi)] transition-colors"
+            >#skills</a
+        >
+        <a
+            href="#contact"
+            class="text-[var(--fg)] hover:text-[var(--fg-hi)] transition-colors"
+            >#contact</a
+        >
+        <button
+            id="theme-toggle"
+            aria-label="Toggle theme"
+            class="inline-flex items-center gap-1.5 bg-transparent border border-[var(--border)] text-[var(--fg)] px-2.5 py-1 text-[11px] tracking-[0.08em] cursor-pointer transition-colors hover:text-[var(--fg-hi)] hover:border-[var(--fg)]"
+        >
+            <svg
+                id="icon-moon"
+                class="hidden"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                ><path
+                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg
+            >
+            <svg
+                id="icon-sun"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                ><circle cx="12" cy="12" r="4"></circle><path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                ></path></svg
+            >
+            <span id="theme-label">light</span>
+        </button>
     </div>
-</header>
-<script>
-    const hamburgerBtn = document.querySelector("#hamburger-button");
-    const mobileMenu = document.querySelector("#mobile-menu");
-    const mobileMenuItems = document.querySelectorAll("#mobile-menu  a,#logo");
-    const toggleMobileMenu = () => {
-        mobileMenu.classList.toggle("hidden");
-        mobileMenu.classList.toggle("flex");
-        hamburgerBtn.classList.toggle("toggle-btn");
-    };
-    hamburgerBtn.addEventListener("click", toggleMobileMenu);
-    mobileMenuItems.forEach((item) =>
-        item.addEventListener("click", toggleMobileMenu)
-    );
+</nav>
+
+<script is:inline>
+    (function () {
+        const btn = document.getElementById("theme-toggle");
+        const sun = document.getElementById("icon-sun");
+        const moon = document.getElementById("icon-moon");
+        const label = document.getElementById("theme-label");
+        const root = document.documentElement;
+
+        function sync() {
+            const isLight = root.classList.contains("theme-light");
+            if (isLight) {
+                sun.classList.add("hidden");
+                moon.classList.remove("hidden");
+                label.textContent = "dark";
+            } else {
+                sun.classList.remove("hidden");
+                moon.classList.add("hidden");
+                label.textContent = "light";
+            }
+        }
+        sync();
+
+        btn.addEventListener("click", () => {
+            const isLight = root.classList.toggle("theme-light");
+            try {
+                localStorage.setItem("theme-light", String(isLight));
+            } catch (e) {}
+            sync();
+        });
+    })();
 </script>
-<style>
-    .toggle-btn > div {
-        transform: rotate(720deg);
-        background-color: transparent;
-    }
-    .toggle-btn > div::before {
-        translate: -1rem 0;
-        transform: rotate(45deg);
-    }
-    .toggle-btn > div::after {
-        translate: -1rem 0;
-        transform: rotate(-45deg);
-    }
-</style>

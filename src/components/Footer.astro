@@ -1,20 +1,13 @@
 ---
+const year = new Date().getFullYear();
 ---
-    <footer class = "flex justify-between items-center py-4">
-        <span class="flex items-center gap-[0.2rem] h-fit ml-[2rem]">
-            <img src="/logo.svg" alt="Website logo" width={16} height={17} />
-            <h2 class="text-xl">Dan N.</h2>
-        </span>
-        <div class="ml-auto mr-8">
-            <span>
-                <a class="flex items-center gap-1" href="https://www.linkedin.com/in/dan-ngendahayo-6956b1193/">
-            <img src="/Linkedin.svg" alt="LinkdedIn link" width={30} height={30}/>
-                        Dan Ngendahayo
-                </a>
-                <a class="flex gap-1" href="https://github.com/Dan925">
-                <img src="/Github.svg" alt="GitHub link" width={30} height={30}/>
-                    Dan925
-                </a>
-            </span>
-        </div>
-    </footer>
+
+<footer
+    class="border-t border-[var(--border)] py-6 px-4 md:px-8 flex items-center justify-between text-[11px] opacity-45 max-w-[900px] mx-auto"
+>
+    <div class="flex items-center gap-2.5">
+        <img src="/logo.svg" alt="" width="14" height="14" />
+        <span>dan ngendahayo © {year}</span>
+    </div>
+    <span>built with astro + tailwind</span>
+</footer>

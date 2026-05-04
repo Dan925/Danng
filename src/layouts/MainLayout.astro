@@ -8,8 +8,8 @@ interface Props {
     description?: string;
 }
 const {
-    title = "Dan Ngendahayo",
-    description = "Dan Stéphane Ngendahayo — software engineering graduate from the University of Ottawa (Class of 2024) with 4+ years of full stack development experience. Building products across AWS microservices, React frontends, and everything in between.",
+    title = "Dan Ng. — Full-stack developer",
+    description = "Dan Stéphane Ngendahayo — full-stack developer. I build fast, modern web applications. Astro, React, and a ThinkPad running Hyprland.",
 } = Astro.props as Props;
 ---
 
@@ -19,7 +19,7 @@ const {
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
         <meta
             name="google-site-verification"
@@ -28,51 +28,19 @@ const {
         <title>{title}</title>
     </head>
     <body>
+        <div class="scanline"></div>
         <NavBar />
         <slot />
         <Footer />
+        <script is:inline>
+            (function () {
+                try {
+                    const saved = localStorage.getItem("theme-light");
+                    if (saved === "true") {
+                        document.documentElement.classList.add("theme-light");
+                    }
+                } catch (e) {}
+            })();
+        </script>
     </body>
 </html>
-<style is:global>
-    @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap");
-    :root {
-        --accent: #ed3434;
-        --bgrd: #282c33;
-        --bgrd-b: #16181c;
-        --gray: #abb2bf;
-        --font-fira: "Fira Code";
-    }
-    html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 10em;
-    }
-    body {
-        width: 100vw;
-        background-color: var(--bgrd);
-        color: white;
-        position: relative;
-        font-family: "Fira Code", monospace;
-    }
-    li {
-        list-style-type: none;
-    }
-    a {
-        text-decoration: none;
-        color: var(--gray);
-    }
-    a:hover,
-    a:active {
-        color: white;
-        cursor: pointer;
-    }
-    h1 {
-        margin-bottom: 0.3em;
-        font-size: 2.5em;
-    }
-    li a::before,
-    h1::before,
-    h5::before {
-        content: "#";
-        color: var(--accent);
-    }
-</style>

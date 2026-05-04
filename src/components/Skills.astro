@@ -1,137 +1,67 @@
 ---
+const skills = [
+    {
+        cat: "Languages",
+        items: ["TypeScript", "JavaScript", "Python", "PHP", "Bash", "SQL"],
+    },
+    {
+        cat: "Frontend",
+        items: ["React", "Astro", "Next.js", "Tailwind CSS", "HTML/CSS"],
+    },
+    {
+        cat: "Backend",
+        items: ["Node.js", "tRPC", "Django", "Prisma", "Postgres"],
+    },
+    {
+        cat: "Tools",
+        items: [
+            "Git",
+            "Linux",
+            "Neovim",
+            "Tmux",
+            "Hyprland",
+            "Claude Code",
+            "Claude Design",
+            "Figma",
+            "GitHub Projects",
+            "Jira",
+        ],
+    },
+];
 ---
-    <section id="skills" class="flex w-full h-[40rem] flex-wrap flex-col items-center">
-        <div class="flex w-3/4 items-center gap-4 py-[3rem] h-1/5 flex-wrap bg-bgrd">
-            <h1>Skills</h1>
-            <div class="border-t-2 border-accent w-[32rem]"></div>
-        </div>
-        <div class="w-full h-4/5 flex flex-wrap justify-center gap-4 overflow-y-auto py-4">
-            <div class="max-w-1/2 h-full px-4 flex flex-col gap-6">
-                <span>My preferred weapons of choice 🪓 </span>
-                <div class="w-full h-[90%] flex justify-between">
-                    <img src="/logo2.svg" class="h-fit w-fit object-none" alt="logo version 2" width={114} height={114}/>
-                    <div class="sk-list">
-                        <p class="text-gray">TypeScript</p>
-                        <p class="text-gray">React</p>
-                        <p class="text-gray">NodeJS</p>
-                        <p class="text-gray">Prisma</p>
+
+<section
+    id="skills"
+    class="py-20 px-4 md:px-8 max-w-[900px] mx-auto border-t border-[var(--border)]"
+>
+    <div class="text-xs text-[var(--fg)] opacity-50 mb-8">
+        <span class="text-[var(--accent)]">dan@portfolio</span><span
+            class="opacity-50">:</span
+        ><span class="text-[#61afef]">~</span><span class="opacity-50">
+            $ cat skills.json</span
+        >
+    </div>
+
+    <div
+        class="grid gap-8"
+        style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));"
+    >
+        {
+            skills.map((s) => (
+                <div>
+                    <div class="text-[13px] text-[var(--accent)] tracking-[0.1em] mb-4 font-medium">
+                        // {s.cat}
+                    </div>
+                    <div class="flex flex-col gap-2.5">
+                        {s.items.map((item) => (
+                            <div class="flex items-center gap-2.5 text-[15px] text-[var(--fg)]">
+                                <span class="text-[var(--border)]">›</span>
+                                {item}
+                            </div>
+                        ))}
                     </div>
                 </div>
-            </div>
-            <div class="min-w-[30rem] h-full grid-sk">
-                <div class="sk-box">
-                    <span>
-                        <h5>Frameworks</h5>
-                    </span>
-                    <div class="sk-box-content">
-                        <span class="sk-list">
-                            <p class="text-gray">React</p>
-                            <p class="text-gray">Angular</p>
-                            <p class="text-gray">NodeJS</p>
-                            <p class="text-gray">Django</p>
-                            <p class="text-gray">Prisma</p>
-                            <p class="text-gray">GraphQL</p>
-                        </span>
-                    </div>
-                </div>
-                <div class="sk-box">
-                    <span>
-                        <h5>Tools</h5>
-                    </span>
-                    <div class="sk-box-content">
-                        <span class="sk-list">
-                            <p class="text-gray">AWS</p>
-                            <p class="text-gray">Docker</p>
-                        </span>
-                    </div>
-                </div>
-                <div class="sk-box">
-                    <span>
-                        <h5>Languages</h5>
-                    </span>
-                    <div class="sk-box-content">
-                        <span class="sk-list">
-                            <p class="text-gray">TypeScript</p>
-                            <p class="text-gray">JavaScript</p>
-                            <p class="text-gray">Java</p>
-                            <p class="text-gray">Python</p>
-                        </span>
-                    </div>
-                </div>
-                <div class="sk-box">
-                    <span>
-                        <h5>Soft Skills</h5>
-                    </span>
-                    <div class="sk-box-content">
-                        <span class="sk-list">
-                            <p class="text-gray">Adaptability</p>
-                            <p class="text-gray">Problem Solving</p>
-                            <p class="text-gray">Critical Thinking</p>
-                            <p class="text-gray">Customer Service</p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<style>
-
-.grid-sk {
-  display: grid;
-  grid-template-rows: 1fr 4fr 1fr 4fr 1fr;
-  grid-template-columns: 1fr 5fr 1fr 4fr 1fr;
-}
-
-.sk-box {
-  border: 1px solid var(--gray);
-  display: flex;
-  flex-direction: column;
-}
-.sk-box > span {
-  display: flex;
-  width: 100%;
-  border-bottom: 1px solid var(--gray);
-  height: 20%;
-  justify-content: center;
-  align-items: center;
-}
-.sk-box-content {
-  height: 90%;
-}
-
-.sk-box:nth-child(1) {
-  grid-row: 1 / span 2;
-  grid-column: 2 / span 2;
-}
-
-.sk-box:nth-child(2) {
-  grid-row: 2 / span 2;
-  grid-column: 4 / span 1;
-}
-.sk-box:nth-child(3) {
-  grid-row: 3 / span 2;
-  grid-column: 1 / span 2;
-}
-
-.sk-box:nth-child(4) {
-  grid-row: 4 / span 2;
-  grid-column: 3 / span 2;
-}
-
-.sk-list {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1em;
-  align-content: space-around;
-}
-.sk-list > p {
-  color: var(--gray);
-}
-.sk-list > p::before {
-  content: "#";
-  color: var(--accent);
-}
-</style>
+            ))
+        }
+    </div>
+</section>

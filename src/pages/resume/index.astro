@@ -1,380 +1,364 @@
 ---
-const title="Dan Ngendahayo - Resume";
-const description="Dan Stéphane Ngendahayo — software engineering graduate from the University of Ottawa (Class of 2024) with 4+ years of full stack development experience. Building products across AWS microservices, React frontends, and everything in between.";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const title = "Dan Ngendahayo — Resume";
+const description =
+    "Dan Stéphane Ngendahayo — software engineering graduate from the University of Ottawa (Class of 2024) with 4+ years of full stack development experience.";
+
+const contacts = [
+    { label: "ngedan25@gmail.com", href: "mailto:ngedan25@gmail.com" },
+    { label: "(873) 355-4805", href: "tel:+18733554805" },
+    {
+        label: "linkedin.com/in/dan-ngendahayo",
+        href: "https://www.linkedin.com/in/dan-ngendahayo-6956b1193/",
+    },
+    { label: "github.com/Dan925", href: "https://github.com/Dan925" },
+    { label: "Greater Montreal region", href: null },
+];
+
+const skills = [
+    {
+        cat: "Languages",
+        items: ["TypeScript", "JavaScript", "Java", "Python"],
+    },
+    {
+        cat: "Frameworks",
+        items: ["React", "Angular", "NodeJS", "Django", "Prisma", "GraphQL"],
+    },
+    { cat: "Tools", items: ["AWS", "Docker"] },
+    {
+        cat: "Soft Skills",
+        items: [
+            "Adaptability",
+            "Problem Solving",
+            "Critical Thinking",
+            "Customer Service",
+        ],
+    },
+];
+
+const languages = [
+    { name: "English", level: "Bilingual proficiency" },
+    { name: "French", level: "Bilingual proficiency" },
+];
+
+const education = [
+    {
+        degree: "BASc in Software Engineering",
+        school: "University of Ottawa",
+        time: "09/2019 — 12/2023 (graduated 2024)",
+        location: "Ottawa, Ontario",
+        notes: ["Dean's list student — CGPA 9.5 / GPA 4.0"],
+    },
+    {
+        degree: "High School Diploma",
+        school: "College Catholique Samuel-Genest",
+        time: "09/2013 — 06/2019",
+        location: "Ottawa, Ontario",
+        notes: ["Governor General of Canada medal of excellence"],
+    },
+];
+
+const certificates = [
+    {
+        title: "Accessibility for Ontarians with Disabilities (AODA)",
+        issuer: "City of Ottawa",
+    },
+];
+
+const work = [
+    {
+        role: "Full Stack Developer",
+        company: "Signiant Inc.",
+        time: "05/2022 — present",
+        location: "Ottawa, Ontario",
+        bullets: [
+            "Used various <b>AWS cloud services</b> to build scalable back-end services with focus on micro-service architecture with <b>NodeJS</b>.",
+            "Improved design thinking skills by actively participating in high level design discussions to provide insightful ideas for solving problems with software.",
+            "Contributed to an agile development process from sprint planning to retrospective by communicating road blocks and collaborating with other developers on a biweekly sprint schedule.",
+        ],
+    },
+    {
+        role: "Software Developer",
+        company: "Giatec Scientific Inc.",
+        time: "09/2021 — 12/2021",
+        location: "Ottawa, Ontario",
+        bullets: [
+            "Worked closely with other developers, the Product Owner and UX to improve product usability by developing new features for their micro-service web app using <b>Django</b> and <b>Angular</b>.",
+            "Maintained customer satisfaction by reproducing and resolving bugs in a timely manner.",
+            "Participated in Agile development process through <b>SCRUM</b> activities such as sprint planning, stand-ups and retrospectives.",
+        ],
+    },
+    {
+        role: "Information Technology Analyst",
+        company: "National Research Council of Canada",
+        time: "05/2020 — 08/2020 & 01/2021 — 04/2021",
+        location: "Ottawa, Ontario",
+        bullets: [
+            "Improved on front-end development skills with <b>HTML</b>, <b>CSS</b> and <b>JavaScript</b> by creating new web pages to meet specific requirements.",
+            "Developed complementary features with a server scripting language in <b>PHP</b> for an IT request management web application.",
+            "Implemented new database management reports using <b>ORACLE DB</b> queries and Microsoft <b>PowerShell</b> scripts.",
+        ],
+    },
+];
 ---
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
- <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="description" content={description}>
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-</head>
-    <header>
-      <h1 class="text-4xl">Dan Stéphane Ngendahayo</h1>
-    </header>
-    <div class="main-container">
-      <aside>
-        <section class="contacts">
-          <a class="media" href="mailto:ngedan25@gmail.com"
-            ><img src="/mail2.svg" alt="mail link" width={30} height={30} />
-            ngedan25@gmail.com
-          </a>
-          <a
-            class="media"
-            href="https://www.linkedin.com/in/dan-ngendahayo-6956b1193/"
-            ><img src="/linkedin2.svg" alt="linkedin link" width={30} height={30}/>
-            dan-ngendahayo
-          </a>
-          <a class="media" href="https://github.com/Dan925"
-            ><img src="/github2.svg" alt="github link" width={30} height={30}/>
-            Dan925
-          </a>
-          <span class="media"
-            ><img src="/phone.svg" alt="phone icon" width={30} height={30}/>
-            <p>(873)355-4805</p>
-          </span>
-          <span class="media"
-            ><img src="/location.svg" alt="location icon" width={30} height={30}/>
-            <p>Greater Montreal region</p>
-          </span>
-        </section>
-        <section class="skills">
-          <span class="heading">
-            <h2 class="text-2xl">Skills</h2>
-          </span>
-          <div class="sk-container">
-            <span class="sk"><p>TypeScript</p> </span>
-            <span class="sk"><p>JavaScript</p> </span>
-            <span class="sk"><p>Java</p> </span>
-            <span class="sk"><p>Python</p> </span>
-            <span class="sk"><p>React</p> </span>
-            <span class="sk"><p>Angular</p> </span>
-            <span class="sk"><p>NodeJS</p> </span>
-            <span class="sk"><p>Django</p> </span>
-            <span class="sk"><p>Prisma</p> </span>
-            <span class="sk"><p>GraphQL</p> </span>
-            <span class="sk"><p>AWS</p> </span>
-            <span class="sk"><p>Docker</p> </span>
-            <span class="sk"><p>Adaptability</p> </span>
-            <span class="sk"><p>Problem Solving</p> </span>
-            <span class="sk"><p>Critical Thinking</p> </span>
-            <span class="sk"><p>Customer Service</p> </span>
-          </div>
-        </section>
-        <section class="langs">
-          <span class="heading">
-            <h2 class="text-2xl">Languages</h2>
-          </span>
-          <div class="lang">
-            <p>English</p>
-            <i> Bilingual Proficiency </i>
-          </div>
-          <div class="lang">
-            <p>French</p>
-            <i> Bilingual Proficiency </i>
-          </div>
-        </section>
-        <section class="interests">
-          <span class="heading"
-            ><h2 class="text-2xl"><p>Interests</p></h2></span
-          >
-          <div class="inter-container">
-            <span class="inter"><p>Web Development</p></span>
-            <span class="inter"><p>Data Science</p></span>
-            <span class="inter"><p>Video Games</p></span>
-          </div>
-        </section>
-      </aside>
 
-      <main>
-        <section class="education">
-          <span class="heading">
-            <h2 class="text-2xl">Education</h2>
-          </span>
-          <div class="section-content">
-            <h3>BASc in Software Engineering</h3>
-            <h4>University of Ottawa</h4>
-            <span class="time">
-              <p>09/2019 - 12/2023 (graduated 2024)</p>
-              <p>Ottawa, Ontario</p>
-            </span>
-            <ul>
-              <li>Dean's list student &mdash; CGPA 9.5 / GPA 4.0</li>
+<MainLayout title={title} description={description}>
+    <main
+        class="resume max-w-[900px] mx-auto px-4 md:px-8 pt-[120px] pb-20"
+    >
+        <div class="text-xs text-[var(--fg)] opacity-50 mb-6 tracking-[0.04em]">
+            <span class="text-[var(--accent)]">dan@portfolio</span><span
+                class="opacity-50">:</span
+            ><span class="text-[#61afef]">~</span><span class="opacity-50">
+                $ cat resume.md</span
+            >
+        </div>
+
+        <header class="mb-12">
+            <h1
+                class="text-[clamp(2rem,5vw,3.5rem)] font-semibold text-[var(--fg-hi)] leading-[1.05] tracking-[-0.02em]"
+            >
+                Dan Stéphane Ngendahayo
+            </h1>
+            <p class="mt-3 text-[var(--accent)] text-base md:text-lg">
+                Full-stack developer
+            </p>
+            <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs md:text-sm">
+                {
+                    contacts.map((c) => (
+                        <li class="text-[var(--fg)]">
+                            {c.href ? (
+                                <a
+                                    href={c.href}
+                                    class="hover:text-[var(--fg-hi)] transition-colors"
+                                    target={
+                                        c.href.startsWith("http")
+                                            ? "_blank"
+                                            : undefined
+                                    }
+                                    rel={
+                                        c.href.startsWith("http")
+                                            ? "noopener"
+                                            : undefined
+                                    }
+                                >
+                                    {c.label}
+                                </a>
+                            ) : (
+                                <span>{c.label}</span>
+                            )}
+                        </li>
+                    ))
+                }
             </ul>
-          </div>
-          <div class="section-content">
-            <h3>High School Diploma</h3>
-            <h4>College Catholique Samuel-Genest</h4>
-            <span class="time">
-              <p>09/2013-06/2019</p>
-              <p>Ottawa, Ontario</p>
-            </span>
-            <ul>
-              <li>Governor General of Canada medal of excellence</li>
-            </ul>
-          </div>
-        </section>
+        </header>
 
-        <section class="certificates">
-          <span class="heading">
-            <h2 class="text-2xl">Certificates</h2>
-          </span>
-          <div class="section-content">
-            <h3>Accessibility for Ontarians with Disabilities (AODA)</h3>
-            <h4>City of Ottawa</h4>
-          </div>
-        </section>
+        <div class="resume-grid">
+            <aside class="flex flex-col gap-10">
+                <section>
+                    <div class="prompt"># skills</div>
+                    <div class="flex flex-col gap-5 mt-3">
+                        {
+                            skills.map((s) => (
+                                <div>
+                                    <div class="cat">// {s.cat}</div>
+                                    <ul class="flex flex-col gap-1.5 mt-1.5">
+                                        {s.items.map((i) => (
+                                            <li class="item">
+                                                <span class="bullet">›</span>
+                                                {i}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </section>
 
-        <section class="work">
-          <span class="heading">
-            <h2 class="text-2xl">Work Experience</h2>
-          </span>
-          <div class="section-content">
-            <h3>Full Stack Developer</h3>
-            <h4>Signiant Inc.</h4>
-            <span class="time">
-              <p>05/2022 - present</p>
-              <p>Ottawa, Ontario</p>
-            </span>
-            <div class="work-details">
-              <ul>
-                <li>
-                  Used various <b>AWS cloud services</b> to build scalable
-                  back-end services with focus on micro-service architecture
-                  with <b>NodeJS</b>.
-                </li>
-                <li>
-                  Improved design thinking skills by actively participating in
-                  high level design discussions in order to provide insightful
-                  ideas and lanes of thoughts for solving problems with
-                  software.
-                </li>
-                <li>
-                  Contributed to an agile development process from sprint
-                  planning to retrospective by communicating road blocks and
-                  collaborating with other developers to achieve current sprint
-                  goals on a biweekly sprint schedule.
-                </li>
-              </ul>
+                <section>
+                    <div class="prompt"># languages</div>
+                    <ul class="mt-3 flex flex-col gap-2">
+                        {
+                            languages.map((l) => (
+                                <li class="item">
+                                    <span class="bullet">›</span>
+                                    {l.name}
+                                    <span class="opacity-60 text-xs ml-1">
+                                        — {l.level}
+                                    </span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+            </aside>
+
+            <div class="flex flex-col gap-12">
+                <section>
+                    <div class="prompt"># work_experience</div>
+                    <div class="flex flex-col gap-8 mt-4">
+                        {
+                            work.map((w) => (
+                                <article class="entry">
+                                    <h3 class="role">{w.role}</h3>
+                                    <div class="company">{w.company}</div>
+                                    <div class="meta">
+                                        <span>{w.time}</span>
+                                        <span>{w.location}</span>
+                                    </div>
+                                    <ul class="bullets mt-3">
+                                        {w.bullets.map((b) => (
+                                            <li set:html={b} />
+                                        ))}
+                                    </ul>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </section>
+
+                <section>
+                    <div class="prompt"># education</div>
+                    <div class="flex flex-col gap-6 mt-4">
+                        {
+                            education.map((e) => (
+                                <article class="entry">
+                                    <h3 class="role">{e.degree}</h3>
+                                    <div class="company">{e.school}</div>
+                                    <div class="meta">
+                                        <span>{e.time}</span>
+                                        <span>{e.location}</span>
+                                    </div>
+                                    {e.notes && (
+                                        <ul class="bullets mt-2">
+                                            {e.notes.map((n) => (
+                                                <li>{n}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </article>
+                            ))
+                        }
+                    </div>
+                </section>
+
+                <section>
+                    <div class="prompt"># certificates</div>
+                    <div class="flex flex-col gap-3 mt-4">
+                        {
+                            certificates.map((c) => (
+                                <article class="entry">
+                                    <h3 class="role">{c.title}</h3>
+                                    <div class="company">{c.issuer}</div>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </section>
             </div>
-          </div>
+        </div>
+    </main>
+</MainLayout>
 
-          <div class="section-content">
-            <h3>Software Developer</h3>
-            <h4>Giatec Scientific Inc.</h4>
-            <span class="time">
-              <p>09/2021-12/2021</p>
-              <p>Ottawa, Ontario</p>
-            </span>
-            <div class="work-details">
-              <ul>
-                <li>
-                  Worked closely with other developers, the Product Owner and UX
-                  to improve product usability by developing new features to
-                  their microservice architecture web application using mainly
-                  <b>Django</b> and <b>Angular</b>.
-                </li>
-                <li>
-                  Maintained customer satisfaction by reproducing and resolving
-                  bugs in a timely manner.
-                </li>
-                <li>
-                  Participated in Agile development process through <b>SCRUM</b>
-                  activities such as sprint planning, stand-ups and
-                  retrospective meetings
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="section-content">
-            <h3>Information Technology Analyst</h3>
-            <h4>National Research Council of Canada</h4>
-            <span class="time">
-              <p>05/2020-08/2020 & 01/2021-04/2021</p>
-              <p>Ottawa, Ontario</p>
-            </span>
-            <div class="work-details">
-              <ul>
-                <li>
-                  Improved on front-web development skills with <b>HTML</b>,
-                  <b>CSS</b> and <b>JavaScript</b> by creating new web pages
-                  to meet specific requirements.
-                </li>
-                <li>
-                  Developed complementary features with a server scripting
-                  language in <b>PHP</b> for an IT request management web
-                  application.
-                </li>
-                <li>
-                  Implemented new database management reports using
-                  <b>ORACLE DB</b> queries and Microsoft <b>PowerShell</b>
-                  scripts.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
 <style>
+    .resume {
+        font-family: "Fira Code", monospace;
+        color: var(--fg);
+    }
+    .resume-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    @media (min-width: 768px) {
+        .resume-grid {
+            grid-template-columns: 220px 1fr;
+            gap: 3rem;
+        }
+    }
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+    .prompt {
+        font-size: 13px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        font-weight: 500;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+    }
+    .cat {
+        font-size: 12px;
+        color: var(--fg);
+        opacity: 0.7;
+        letter-spacing: 0.08em;
+    }
+    .item {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--fg);
+    }
+    .bullet {
+        color: var(--border);
+    }
 
-:root {
-  --accent: #34678c;
-  --accent-lg: #99b3c5;
-}
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans", "sans-serif";
-}
+    .entry .role {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--fg-hi);
+    }
+    .entry .company {
+        font-size: 14px;
+        color: var(--accent);
+        margin-top: 2px;
+    }
+    .entry .meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 6px 16px;
+        font-size: 12px;
+        color: var(--fg);
+        opacity: 0.6;
+        margin-top: 4px;
+    }
+    .entry .bullets {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .entry .bullets li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    .entry .bullets li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+    }
 
-a,
-a:hover {
-  text-decoration: none;
-  color: black;
-}
-li {
-  list-style-type: square;
-}
-header {
-  width: 99%;
-  margin: 1em 0 2em 1em;
-  height: 20%;
-  background-color: var(--accent);
-  color: white;
-  float: right;
-  padding: 1em;
-}
-header span {
-  display: block;
-  width: 15em;
-  height: 1.5em;
-  border-bottom: 1px solid white;
-  margin-bottom: 0.4em;
-}
-
-.main-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-aside {
-  width: 20%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-}
-main {
-  width: 70%;
-  height: 100%;
-}
-.contacts {
-  width: 100%;
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-.media {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3em;
-}
-.skills {
-  width: 100%;
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-}
-.langs {
-  width: 100%;
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-}
-.interests {
-  width: 100%;
-  height: 25%;
-  display: flex;
-  flex-direction: column;
-}
-
-.heading {
-  display: block;
-  width: 100%;
-  height: 2em;
-  border-bottom: 2px solid var(--accent);
-  margin-bottom: 0.4em;
-}
-.heading h2,
-.section-content h3 {
-  color: var(--accent);
-}
-.section-content {
-  margin: 1em 0;
-}
-
-.time {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: var(--accent-lg);
-  margin-bottom: 0.5em;
-}
-.education {
-  width: 100%;
-  height: 20%;
-}
-
-.work {
-  width: 100%;
-  height: 100%;
-}
-
-.sk-container {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  gap: 0.2em;
-  flex-wrap: wrap;
-}
-.sk {
-  width: fit-content;
-  height: fit-content;
-  padding: 0.5em;
-  background-color: var(--accent-lg);
-  color: white;
-  border-radius: 10px;
-}
-
-i {
-  color: var(--accent);
-}
-.lang {
-  margin: 1em 0;
-}
-.inter-container {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-}
-.inter {
-  width: fit-content;
-  height: fit-content;
-  padding: 0.5em;
-  border: 1px solid black;
-
-  border-radius: 5px;
-}
-
+    @media print {
+        :global(.scanline),
+        :global(nav),
+        :global(footer) {
+            display: none !important;
+        }
+        .resume {
+            padding-top: 0 !important;
+            color: #000 !important;
+        }
+        :global(html),
+        :global(body) {
+            background: #fff !important;
+            color: #000 !important;
+            font-size: 11pt !important;
+        }
+    }
 </style>

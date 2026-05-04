@@ -1,92 +1,165 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectPreview from "./ProjectPreview.astro";
 const projectEntries = (await getCollection("project")).sort((a, b) =>
     a.id.localeCompare(b.id)
 );
+const projects = projectEntries.map((e) => e.data);
 ---
 
 <section
     id="projects"
-    class="flex w-full flex-col items-center py-12 gap-8"
+    class="py-20 px-4 md:px-8 max-w-[900px] mx-auto"
 >
-    <div class="flex w-3/4 items-center gap-4 flex-wrap bg-bgrd">
-        <h1>Projects</h1>
-        <div class="border-t-2 border-accent flex-1 min-w-[8rem]"></div>
-        <a class="hover:underline" href="https://github.com/Dan925">
-            <span>See More &rarr;</span>
-        </a>
+    <div class="text-xs text-[var(--fg)] opacity-50 mb-6">
+        <span class="text-[var(--accent)]">dan@portfolio</span><span
+            class="opacity-50">:</span
+        ><span class="text-[#61afef]">~</span><span class="opacity-50">
+            $ ls projects/</span
+        >
     </div>
 
-    <div class="relative w-full max-w-[80rem] px-4">
-        <button
-            type="button"
-            id="proj-prev"
-            aria-label="Previous projects"
-            class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 items-center justify-center rounded-full bg-bgrd-b border-2 border-accent text-white text-3xl hover:bg-accent transition-colors cursor-pointer"
-        >
-            &larr;
-        </button>
-        <button
-            type="button"
-            id="proj-next"
-            aria-label="Next projects"
-            class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 items-center justify-center rounded-full bg-bgrd-b border-2 border-accent text-white text-3xl hover:bg-accent transition-colors cursor-pointer"
-        >
-            &rarr;
-        </button>
+    <div
+        id="carousel"
+        class="border border-[var(--border)] bg-[var(--bg-b)] p-6"
+        data-total={projects.length}
+    >
+        <div class="flex items-center justify-between mb-5">
+            <span class="text-[11px] text-[var(--fg)] opacity-50 tracking-[0.08em]">
+                <span id="carousel-counter" class="text-[var(--accent)]">01</span>
+                / <span>{String(projects.length).padStart(2, "0")}</span>
+            </span>
+            <div class="flex gap-2">
+                <button
+                    id="carousel-prev"
+                    aria-label="Previous"
+                    class="px-3 py-1.5 bg-transparent border border-[var(--border)] text-[var(--fg)] cursor-pointer text-xs hover:text-[var(--fg-hi)] hover:border-[var(--fg)] transition-colors"
+                >
+                    ←
+                </button>
+                <button
+                    id="carousel-next"
+                    aria-label="Next"
+                    class="px-3 py-1.5 bg-[var(--accent)] border border-[var(--accent)] text-white cursor-pointer text-xs hover:opacity-85 transition-opacity"
+                >
+                    →
+                </button>
+            </div>
+        </div>
 
-        <div
-            id="proj-track"
-            class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 px-2 md:px-12"
-        >
-            {
-                projectEntries.map(({ data }) => (
-                    <ProjectPreview
-                        title={data.title}
-                        description={data.description}
-                        tags={data.tags}
-                        thumbnail={data.thumbnail}
-                        sourceCode={data.sourceCode}
-                        liveUrl={data.liveUrl}
-                    />
-                ))
-            }
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+            <img
+                id="carousel-image"
+                src={projects[0].thumbnail}
+                alt={projects[0].title}
+                class="w-full h-[280px] object-cover opacity-85 border border-[var(--border)]"
+            />
+            <div>
+                <h3
+                    id="carousel-title"
+                    class="text-xl font-semibold text-[var(--fg-hi)] mb-3"
+                >
+                    {projects[0].title}
+                </h3>
+                <p
+                    id="carousel-desc"
+                    class="text-[13px] leading-[1.7] text-[var(--fg)] mb-5 opacity-85"
+                >
+                    {projects[0].description}
+                </p>
+                <div id="carousel-tags" class="flex gap-1.5 flex-wrap mb-5">
+                    {projects[0].tags.map((t) => (
+                        <span class="text-[10px] px-2.5 py-0.5 border border-[var(--border)] text-[var(--accent)] tracking-[0.06em]">
+                            {t}
+                        </span>
+                    ))}
+                </div>
+                <div id="carousel-links" class="flex gap-4 flex-wrap"></div>
+            </div>
+        </div>
+
+        <div class="flex gap-1 mt-5" id="carousel-dots">
+            {projects.map((_, i) => (
+                <button
+                    type="button"
+                    class="carousel-dot flex-1 h-0.5 cursor-pointer p-0 border-0"
+                    data-idx={i}
+                    style={`background: ${i === 0 ? "var(--accent)" : "var(--border)"}`}
+                    aria-label={`Go to project ${i + 1}`}
+                />
+            ))}
         </div>
     </div>
 </section>
 
-<script>
-    const track = document.querySelector<HTMLElement>("#proj-track");
-    const prev = document.querySelector<HTMLButtonElement>("#proj-prev");
-    const next = document.querySelector<HTMLButtonElement>("#proj-next");
+<script
+    is:inline
+    define:vars={{ projectsData: projects }}
+>
+    (function () {
+        const carousel = document.getElementById("carousel");
+        if (!carousel) return;
 
-    if (track && prev && next) {
-        const step = () => {
-            const card = track.querySelector<HTMLElement>("article");
-            if (!card) return track.clientWidth;
-            const gap = parseFloat(getComputedStyle(track).columnGap || "32");
-            return card.offsetWidth + gap;
-        };
-        prev.addEventListener("click", () =>
-            track.scrollBy({ left: -step(), behavior: "smooth" })
-        );
-        next.addEventListener("click", () =>
-            track.scrollBy({ left: step(), behavior: "smooth" })
-        );
-    }
+        const total = projectsData.length;
+        let idx = 0;
+
+        const $img = document.getElementById("carousel-image");
+        const $title = document.getElementById("carousel-title");
+        const $desc = document.getElementById("carousel-desc");
+        const $tags = document.getElementById("carousel-tags");
+        const $links = document.getElementById("carousel-links");
+        const $counter = document.getElementById("carousel-counter");
+        const $prev = document.getElementById("carousel-prev");
+        const $next = document.getElementById("carousel-next");
+        const dots = Array.from(document.querySelectorAll(".carousel-dot"));
+
+        function render() {
+            const p = projectsData[idx];
+            $img.src = p.thumbnail;
+            $img.alt = p.title;
+            $title.textContent = p.title;
+            $desc.textContent = p.description;
+            $counter.textContent = String(idx + 1).padStart(2, "0");
+
+            $tags.innerHTML = p.tags
+                .map(
+                    (t) =>
+                        `<span class="text-[10px] px-2.5 py-0.5 border border-[var(--border)] text-[var(--accent)] tracking-[0.06em]">${t}</span>`
+                )
+                .join("");
+
+            const linkParts = [];
+            if (p.liveUrl) {
+                linkParts.push(
+                    `<a href="${p.liveUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-[var(--fg-hi)] px-4 py-2 border border-[var(--fg-hi)] hover:opacity-80 transition-opacity">live ↗</a>`
+                );
+            }
+            if (p.sourceCode) {
+                linkParts.push(
+                    `<a href="${p.sourceCode}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-[var(--fg)] px-4 py-2 border border-[var(--border)] hover:text-[var(--fg-hi)] hover:border-[var(--fg)] transition-colors">source</a>`
+                );
+            }
+            $links.innerHTML = linkParts.join("");
+
+            dots.forEach((d, i) => {
+                d.style.background =
+                    i === idx ? "var(--accent)" : "var(--border)";
+            });
+        }
+
+        $prev.addEventListener("click", () => {
+            idx = (idx - 1 + total) % total;
+            render();
+        });
+        $next.addEventListener("click", () => {
+            idx = (idx + 1) % total;
+            render();
+        });
+        dots.forEach((d) => {
+            d.addEventListener("click", () => {
+                idx = parseInt(d.dataset.idx, 10);
+                render();
+            });
+        });
+        render();
+    })();
 </script>
-
-<style>
-    #proj-track::-webkit-scrollbar {
-        height: 8px;
-    }
-    #proj-track::-webkit-scrollbar-track {
-        background: var(--bgrd-b);
-        border-radius: 4px;
-    }
-    #proj-track::-webkit-scrollbar-thumb {
-        background: var(--accent);
-        border-radius: 4px;
-    }
-</style>
