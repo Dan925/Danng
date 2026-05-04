@@ -73,9 +73,9 @@ const work = [
         time: "05/2022 — present",
         location: "Ottawa, Ontario",
         bullets: [
-            "Used various <b>AWS cloud services</b> to build scalable back-end services with focus on micro-service architecture with <b>NodeJS</b>.",
-            "Improved design thinking skills by actively participating in high level design discussions to provide insightful ideas for solving problems with software.",
-            "Contributed to an agile development process from sprint planning to retrospective by communicating road blocks and collaborating with other developers on a biweekly sprint schedule.",
+           "used various <b>aws cloud services</b> to build scalable back-end services with focus on micro-service architecture with <b>nodejs</b>.",
+            "improved design thinking skills by actively participating in high level design discussions to provide insightful ideas for solving problems with software.",
+            "contributed to an agile development process from sprint planning to retrospective by communicating road blocks and collaborating with other developers on a biweekly sprint schedule.",
         ],
     },
     {
@@ -107,12 +107,21 @@ const work = [
     <main
         class="resume max-w-[900px] mx-auto px-4 md:px-8 pt-[120px] pb-20"
     >
-        <div class="text-xs text-[var(--fg)] opacity-50 mb-6 tracking-[0.04em]">
-            <span class="text-[var(--accent)]">dan@portfolio</span><span
-                class="opacity-50">:</span
-            ><span class="text-[#61afef]">~</span><span class="opacity-50">
-                $ cat resume.md</span
+        <div class="flex items-center justify-between gap-4 mb-6">
+            <div class="text-xs text-[var(--fg)] opacity-50 tracking-[0.04em]">
+                <span class="text-[var(--accent)]">dan@portfolio</span><span
+                    class="opacity-50">:</span
+                ><span class="text-[#61afef]">~</span><span class="opacity-50">
+                    $ cat resume.md</span
+                >
+            </div>
+            <a
+                href="/resume.pdf"
+                download
+                class="resume-download text-xs md:text-sm px-3 py-1.5 border border-[var(--border)] text-[var(--fg)] hover:text-[var(--fg-hi)] hover:border-[var(--accent)] transition-colors tracking-[0.04em]"
             >
+                ↓ download.pdf
+            </a>
         </div>
 
         <header class="mb-12">
@@ -347,17 +356,39 @@ const work = [
     @media print {
         :global(.scanline),
         :global(nav),
-        :global(footer) {
+        :global(footer),
+        .resume-download {
             display: none !important;
+        }
+        .resume,
+        .resume h1,
+        .resume h2,
+        .resume h3,
+        .resume p,
+        .resume li,
+        .resume span,
+        .resume div,
+        .resume .item,
+        .resume .cat,
+        .resume .entry .role,
+        .resume .entry .meta {
+            color: #000 !important;
+            opacity: 1 !important;
         }
         .resume {
             padding-top: 0 !important;
-            color: #000 !important;
+        }
+        .resume .prompt,
+        .resume .entry .company,
+        .resume .entry .bullets li::before {
+            color: #b8442e !important;
+        }
+        .resume .bullet {
+            color: #888 !important;
         }
         :global(html),
         :global(body) {
             background: #fff !important;
-            color: #000 !important;
             font-size: 11pt !important;
         }
     }

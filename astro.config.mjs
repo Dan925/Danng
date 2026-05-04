@@ -5,6 +5,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
+    base: './',
     site: "https://danng.netlify.app",
     output: "static",
     adapter: netlify(),

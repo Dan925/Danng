@@ -10,9 +10,10 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro build",
+        "build": "astro build && npm run resumePdf",
         "preview": "astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "resumePdf": "node scripts/generate-resume-pdf.js"
     },
     "keywords": [],
     "author": "",
@@ -22,6 +23,7 @@
         "@astrojs/sitemap": "^3.6.0",
         "@tailwindcss/vite": "^4.1.16",
         "astro": "^5.16.5",
+        "puppeteer": "^24.42.0",
         "sharp": "^0.34.5",
         "tailwindcss": "^4.1.16"
     }
