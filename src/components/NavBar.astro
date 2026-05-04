@@ -2,24 +2,36 @@
 ---
 
 <nav
-    class="fixed top-0 left-0 right-0 z-100 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md h-12 flex items-center justify-between px-4 md:px-8"
+    class="fixed top-0 left-0 right-0 z-100 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md h-12 flex items-center justify-between px-3 md:px-8 gap-2"
 >
-    <a href="#hero" class="flex items-center gap-3 min-w-0">
-        <img src="/logo.svg" alt="Logo" width="22" height="22" />
-        <span class="text-[var(--fg-hi)] text-[13px] tracking-[0.08em]"
-            >dan-ng</span
+    <a href="#hero" class="flex items-center gap-2 md:gap-3 min-w-0 shrink">
+        <img
+            src="/logo.svg"
+            alt="Logo"
+            width="22"
+            height="22"
+            class="shrink-0"
+        />
+        <span
+            class="text-[var(--fg-hi)] text-[13px] sm:text-[16px] tracking-[0.08em] truncate"
+            >Dan-Ng</span
         >
-        <span class="hidden sm:inline text-[var(--border)] text-xs">~</span>
-        <span class="hidden sm:inline text-[var(--accent)] text-xs"
+        <span class="hidden md:inline text-[var(--border)] text-[12px] sm:text-[16px]">~</span>
+        <span
+            class="hidden md:inline text-[var(--accent)] text-[12px] sm:text-[16px] truncate"
             >portfolio</span
         >
-        <span class="hidden sm:inline cursor-blink"></span>
+        <span class="hidden md:inline cursor-blink shrink-0"></span>
     </a>
-    <div class="flex items-center gap-3 md:gap-6 text-xs tracking-[0.06em]">
+    <div
+        class="flex items-center gap-2 md:gap-6 text-[12px] sm:text-[16px] tracking-[0.06em] shrink-0"
+    >
         <a
             href="#projects"
             class="text-[var(--fg)] hover:text-[var(--fg-hi)] transition-colors"
-            >#projects</a
+            ><span class="hidden sm:inline">#projects</span><span
+                class="sm:hidden">#proj..</span
+            ></a
         >
         <a
             href="#skills"
@@ -29,12 +41,15 @@
         <a
             href="#contact"
             class="text-[var(--fg)] hover:text-[var(--fg-hi)] transition-colors"
-            >#contact</a
+            >
+
+<span class="hidden sm:inline">#contact</span><span class="sm:hidden">#cont..</span>
+            </a
         >
         <button
             id="theme-toggle"
             aria-label="Toggle theme"
-            class="inline-flex items-center gap-1.5 bg-transparent border border-[var(--border)] text-[var(--fg)] px-2.5 py-1 text-[11px] tracking-[0.08em] cursor-pointer transition-colors hover:text-[var(--fg-hi)] hover:border-[var(--fg)]"
+            class="inline-flex items-center gap-1.5 bg-transparent border border-[var(--border)] text-[var(--fg)] px-2 md:px-2.5 py-1 text-[11px] tracking-[0.08em] cursor-pointer transition-colors hover:text-[var(--fg-hi)] hover:border-[var(--fg)] shrink-0"
         >
             <svg
                 id="icon-moon"
@@ -58,7 +73,7 @@
                     d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
                 ></path></svg
             >
-            <span id="theme-label">light</span>
+            <span id="theme-label" class="hidden sm:inline">light</span>
         </button>
     </div>
 </nav>

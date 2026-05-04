@@ -8,7 +8,7 @@ const projects = projectEntries.map((e) => e.data);
 
 <section
     id="projects"
-    class="py-20 px-4 md:px-8 max-w-[900px] mx-auto"
+    class="py-12 md:py-20 px-4 md:px-8 max-w-[900px] mx-auto"
 >
     <div class="text-xs text-[var(--fg)] opacity-50 mb-6">
         <span class="text-[var(--accent)]">dan@portfolio</span><span
@@ -20,7 +20,7 @@ const projects = projectEntries.map((e) => e.data);
 
     <div
         id="carousel"
-        class="border border-[var(--border)] bg-[var(--bg-b)] p-6"
+        class="border border-[var(--border)] bg-[var(--bg-b)] p-4 md:p-6"
         data-total={projects.length}
     >
         <div class="flex items-center justify-between mb-5">
@@ -51,7 +51,7 @@ const projects = projectEntries.map((e) => e.data);
                 id="carousel-image"
                 src={projects[0].thumbnail}
                 alt={projects[0].title}
-                class="w-full h-[280px] object-cover opacity-85 border border-[var(--border)]"
+                class="w-full h-[200px] md:h-[280px] object-cover opacity-85 border border-[var(--border)]"
             />
             <div>
                 <h3
