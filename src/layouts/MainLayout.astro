@@ -6,10 +6,12 @@ import Footer from "../components/Footer.astro";
 interface Props {
     title?: string;
     description?: string;
+    hideNav?: boolean;
 }
 const {
     title = "Dan Ng. — Full-stack developer",
     description = "Dan Stéphane Ngendahayo — full-stack developer. I build fast, modern web applications. Astro, React, and a ThinkPad running Hyprland.",
+    hideNav = false,
 } = Astro.props as Props;
 ---
 
@@ -29,7 +31,7 @@ const {
     </head>
     <body>
         <div class="scanline"></div>
-        <NavBar />
+        {!hideNav && <NavBar />}
         <slot />
         <Footer />
         <script is:inline>

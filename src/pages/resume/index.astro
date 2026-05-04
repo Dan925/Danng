@@ -103,10 +103,16 @@ const work = [
 ];
 ---
 
-<MainLayout title={title} description={description}>
+<MainLayout title={title} description={description} hideNav={true}>
     <main
-        class="resume max-w-[900px] mx-auto px-4 md:px-8 pt-[120px] pb-20"
+        class="resume max-w-[900px] mx-auto px-4 md:px-8 pt-12 md:pt-16 pb-20"
     >
+        <a
+            href="/"
+            class="resume-back inline-block mb-6 text-xs text-[var(--fg)] opacity-70 hover:opacity-100 hover:text-[var(--fg-hi)] tracking-[0.04em] transition"
+        >
+            ← cd ..
+        </a>
         <div class="flex items-center justify-between gap-4 mb-6">
             <div class="text-xs text-[var(--fg)] opacity-50 tracking-[0.04em]">
                 <span class="text-[var(--accent)]">dan@portfolio</span><span
@@ -357,7 +363,8 @@ const work = [
         :global(.scanline),
         :global(nav),
         :global(footer),
-        .resume-download {
+        .resume-download,
+        .resume-back {
             display: none !important;
         }
         .resume,
