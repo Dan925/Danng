@@ -6,8 +6,9 @@ interface ProjectProps {
     tags: string[];
     sourceCode?: string;
     liveUrl?: string;
+    reportUrl?: string;
 }
-const { title, description, thumbnail, tags, sourceCode, liveUrl } =
+const { title, description, thumbnail, tags, sourceCode, liveUrl, reportUrl } =
     Astro.props as ProjectProps;
 ---
 
@@ -47,6 +48,16 @@ const { title, description, thumbnail, tags, sourceCode, liveUrl } =
                 >
                     <img src="/Github.svg" alt="" width={20} height={20} />
                     Source Code
+                </a>
+            )}
+            {reportUrl && (
+                <a
+                    class="text-white flex items-center justify-center gap-2 border-accent border-2 h-12 px-4 cursor-pointer font-bold"
+                    href={reportUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Analytics Report
                 </a>
             )}
         </div>

@@ -138,6 +138,11 @@ const projects = projectEntries.map((e) => e.data);
                     `<a href="${p.sourceCode}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-[var(--fg)] px-4 py-2 border border-[var(--border)] hover:text-[var(--fg-hi)] hover:border-[var(--fg)] transition-colors">source</a>`
                 );
             }
+            if (p.reportUrl) {
+                linkParts.push(
+                    `<a href="${p.reportUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs text-[var(--fg)] px-4 py-2 border border-[var(--border)] hover:text-[var(--fg-hi)] hover:border-[var(--fg)] transition-colors">analytics ↗</a>`
+                );
+            }
             $links.innerHTML = linkParts.join("");
 
             dots.forEach((d, i) => {
