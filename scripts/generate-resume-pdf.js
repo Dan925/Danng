@@ -9,7 +9,10 @@ import puppeteer from 'puppeteer';
     const htmlPath = path.join(distDir, 'resume/index.html');
     const pdfPath = path.join(distDir, 'resume.pdf');
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     const page = await browser.newPage();
     await page.emulateMediaType('print');
     await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0' });
